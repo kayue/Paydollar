@@ -17,6 +17,9 @@ class PaymentDetails implements \ArrayAccess, \IteratorAggregate
     const CREDITCARDTYPE_JCB = 'JCB';
     const CREDITCARDTYPE_AMEX = 'AMEX';
 
+    const PAYMENTTYPE_NORMAL = 'N';
+    const PAYMENTTYPE_HOLD   = 'H';
+
     protected $request_orderRef;
     protected $request_amount;
     protected $request_currCode;
@@ -411,7 +414,7 @@ class PaymentDetails implements \ArrayAccess, \IteratorAggregate
      */
     public function setPayType($payType)
     {
-        if(!in_array($payType, ['N', 'H'])) {
+        if(!in_array($payType, [self::PAYMENTTYPE_NORMAL, self::PAYMENTTYPE_HOLD])) {
             throw new InvalidArgumentException('Invalid pay type.');
         }
 

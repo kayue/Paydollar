@@ -36,7 +36,7 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
         $instruction->setSuccessUrl('http://google.com');
         $instruction->setFailUrl('http://google.com');
         $instruction->setErrorUrl('http://google.com');
-        $instruction->setPayType('N');
+        $instruction->setPayType(PaymentDetails::PAYMENTTYPE_NORMAL);
 
         $captureRequest = new CaptureRequest($instruction);
         $payment->execute($captureRequest);
