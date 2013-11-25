@@ -27,7 +27,7 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
         $instruction->setCurrCode(840);
         $instruction->setLang('E');
         $instruction->setMerchantId($GLOBALS['__KAYUE_PAYDOLLAR_MERCHANT_ID']);
-        $instruction->setPMethod('VISA');
+        $instruction->setPMethod(PaymentDetails::CREDITCARDTYPE_VISA);
         $instruction->setEpMonth('07');
         $instruction->setEpYear('2015');
         $instruction->setCardNo('4918914107195005');

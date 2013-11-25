@@ -11,6 +11,12 @@ use Traversable;
  */
 class PaymentDetails implements \ArrayAccess, \IteratorAggregate
 {
+    const CREDITCARDTYPE_VISA = 'Visa';
+    const CREDITCARDTYPE_MASTERCARD = 'Master';
+    const CREDITCARDTYPE_DINERSCLUB = 'Diners';
+    const CREDITCARDTYPE_JCB = 'JCB';
+    const CREDITCARDTYPE_AMEX = 'AMEX';
+
     protected $request_orderRef;
     protected $request_amount;
     protected $request_currCode;
@@ -180,7 +186,11 @@ class PaymentDetails implements \ArrayAccess, \IteratorAggregate
     public function setPMethod($pMethod)
     {
         if(!in_array($pMethod, [
-            'VISA', 'Master', 'Diners', 'JCB', 'AMEX'
+            self::CREDITCARDTYPE_AMEX,
+            self::CREDITCARDTYPE_DINERSCLUB,
+            self::CREDITCARDTYPE_JCB,
+            self::CREDITCARDTYPE_MASTERCARD,
+            self::CREDITCARDTYPE_VISA,
         ])) {
             throw new InvalidArgumentException('Invalid payment card type.');
         }
