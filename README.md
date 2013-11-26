@@ -1,4 +1,4 @@
-# PayDollar Server Side Direct Connection
+# PayDollar library for Payum
 
 This library implements PayDollar's [Server Side Direct Connection](http://www.paydollar.com/pdf/paygate_integration_guide.pdf)
 

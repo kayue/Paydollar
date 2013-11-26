@@ -1,8 +1,8 @@
 {
-    "name": "kayue/paydollar-server-side-direct-connection",
+    "name": "kayue/paydollar",
     "type": "library",
-    "description": "A Payum library for PayDollar Server Side Direct Connection.",
-    "keywords": ["asiapay", "paydollar", "server side direct connection"],
+    "description": "A Payum library for AsiaPay PayDollar",
+    "keywords": ["asiapay", "paydollar"],
     "license": "MIT",
     "authors": [
         {
@@ -22,7 +22,7 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-0": { "Kayue\\Paydollar\\ServerSideDirectConnection": "src/" }
+        "psr-0": { "Kayue\\Paydollar": "src/" }
     },
     "extra": {
         "branch-alias": {
