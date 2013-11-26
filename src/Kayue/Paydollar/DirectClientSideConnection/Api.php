@@ -1,32 +1,24 @@
 <?php
 
 namespace Kayue\Paydollar\DirectClientSideConnection;
-use Buzz\Client\ClientInterface;
-use Buzz\Message\Form\FormRequest;
 use Buzz\Message\Response;
+use Payum\Request\CaptureRequest;
 
 class Api
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
-
     /**
      * @var array
      */
     protected $options;
 
-    function __construct(ClientInterface $client, array $options)
+    function __construct(array $options)
     {
-        $this->client = $client;
         $this->options = $options;
     }
 
-    public function createMiddlePage(FormRequest $request)
+    public function createMiddlePage(CaptureRequest $request)
     {
         ob_start(); ?>
-
 <!DOCTYPE html>
     <html>
     <head>
@@ -42,7 +34,6 @@ class Api
     </script>
     </body>
 </html>
-
         <?
         $html = ob_get_contents();
         ob_end_clean();
@@ -60,14 +51,6 @@ class Api
         }
 
         return "https://www.paydollar.com/b2c2/eng/dPayment/payComp.jsp";
-    }
-
-    /**
-     * @param FormRequest $request
-     */
-    protected function addOptions(FormRequest $request)
-    {
-        $request->setField('merchantId', $this->options['merchantId']);
     }
 
     /**

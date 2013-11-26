@@ -15,13 +15,10 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
      */
     public function testVisa()
     {
-        $this->markTestIncomplete('Nothing here at the moemnt.');
-
         //@testo:start
-        $payment = PaymentFactory::create(new Api(new Curl, array(
             'merchantId' => $GLOBALS['__KAYUE_PAYDOLLAR_MERCHANT_ID'],
-            'sandbox' => true
-        )));
+            'sandbox' => true,
+        ]));
 
         $instruction = new PaymentDetails();
         $instruction->setOrderRef(uniqid());
@@ -40,7 +37,9 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
         $instruction->setPayType(PaymentDetails::PAYMENTTYPE_NORMAL);
 
         $captureRequest = new CaptureRequest($instruction);
-        $interactiveRequest = $payment->execute($captureRequest);
+        $interactiveRequest = $payment->execute($captureRequest, true);
+
+        $this->assertInstanceOf('Kayue\Paydollar\DirectClientSideConnection\Request\ResponseInteractiveRequest', $interactiveRequest);
 
         // TODO: echo the page
     }
