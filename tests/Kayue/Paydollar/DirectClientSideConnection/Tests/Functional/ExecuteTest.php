@@ -16,12 +16,15 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
     public function testVisa()
     {
         //@testo:start
+        $payment = PaymentFactory::create(new Api([
             'merchantId' => $GLOBALS['__KAYUE_PAYDOLLAR_MERCHANT_ID'],
             'sandbox' => true,
         ]));
 
+        $orderRef = uniqid();
+
         $instruction = new PaymentDetails();
-        $instruction->setOrderRef(uniqid());
+        $instruction->setOrderRef($orderRef);
         $instruction->setAmount('1.00');
         $instruction->setCurrCode(840);
         $instruction->setLang('E');
@@ -40,7 +43,7 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
         $interactiveRequest = $payment->execute($captureRequest, true);
 
         $this->assertInstanceOf('Kayue\Paydollar\DirectClientSideConnection\Request\ResponseInteractiveRequest', $interactiveRequest);
-
-        // TODO: echo the page
+        $this->assertContains("name=\"merchantId\" value=\"{$GLOBALS['__KAYUE_PAYDOLLAR_MERCHANT_ID']}\"", $interactiveRequest->getContent());
+        $this->assertContains("name=\"orderRef\" value=\"{$orderRef}\"", $interactiveRequest->getContent());
     }
 } 

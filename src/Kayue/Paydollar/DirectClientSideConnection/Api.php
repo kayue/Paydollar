@@ -18,6 +18,8 @@ class Api
 
     public function createMiddlePage(CaptureRequest $request)
     {
+        $request->getModel()->setMerchantId($this->options['merchantId']);
+
         ob_start(); ?>
 <!DOCTYPE html>
     <html>
@@ -27,7 +29,9 @@ class Api
     </head>
     <body>
     <form action='<?= $this->getApiEndpoint(); ?>' method='post' name='paydollar'>
-        <? // TODO: build the hidden form ?>
+        <? foreach($request->getModel()->getRequest() as $name => $value): ?>
+        <input type="hidden" name="<?= $name; ?>" value="<?= $value ?>" />
+        <? endforeach; ?>
     </form>
     <script>
         document.paydollar.submit();
