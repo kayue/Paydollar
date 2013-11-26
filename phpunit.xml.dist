@@ -16,7 +16,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="PayDollar Server Side Direct Connection Tests">
+        <testsuite name="PayDollar Tests">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
