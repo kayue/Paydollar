@@ -1,11 +1,11 @@
 <?php
 
-namespace Kayue\Paydollar\ServerSideDirectConnection\Tests\Functional;
+namespace Kayue\Paydollar\DirectClientSideConnection\Tests\Functional;
 
 use Buzz\Client\Curl;
-use Kayue\Paydollar\ServerSideDirectConnection\Api;
+use Kayue\Paydollar\DirectClientSideConnection\Api;
 use Kayue\Paydollar\Model\PaymentDetails;
-use Kayue\Paydollar\ServerSideDirectConnection\PaymentFactory;
+use Kayue\Paydollar\DirectClientSideConnection\PaymentFactory;
 use Payum\Request\CaptureRequest;
 
 class ExecuteTest extends \PHPUnit_Framework_TestCase
@@ -15,6 +15,8 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
      */
     public function testVisa()
     {
+        $this->markTestIncomplete('Nothing here at the moemnt.');
+
         //@testo:start
         $payment = PaymentFactory::create(new Api(new Curl, array(
             'merchantId' => $GLOBALS['__KAYUE_PAYDOLLAR_MERCHANT_ID'],
@@ -38,8 +40,8 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
         $instruction->setPayType(PaymentDetails::PAYMENTTYPE_NORMAL);
 
         $captureRequest = new CaptureRequest($instruction);
-        $payment->execute($captureRequest);
+        $interactiveRequest = $payment->execute($captureRequest);
 
-        $this->markTestIncomplete('Nothing here at the moemnt.');
+        // TODO: echo the page
     }
-}
+} 
