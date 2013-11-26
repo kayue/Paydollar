@@ -11,7 +11,7 @@ use Traversable;
  */
 class PaymentDetails implements \ArrayAccess, \IteratorAggregate
 {
-    const CREDITCARDTYPE_VISA = 'Visa';
+    const CREDITCARDTYPE_VISA = 'VISA';
     const CREDITCARDTYPE_MASTERCARD = 'Master';
     const CREDITCARDTYPE_DINERSCLUB = 'Diners';
     const CREDITCARDTYPE_JCB = 'JCB';
