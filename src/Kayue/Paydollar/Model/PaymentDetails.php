@@ -1,6 +1,6 @@
 <?php
 
-namespace Kayue\Paydollar\ServerSideDirectConnection\Model;
+namespace Kayue\Paydollar\Model;
 
 use Payum\Exception\InvalidArgumentException;
 use Payum\Exception\LogicException;

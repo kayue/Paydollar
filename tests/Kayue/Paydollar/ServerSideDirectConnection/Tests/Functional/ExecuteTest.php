@@ -4,7 +4,7 @@ namespace Kayue\Paydollar\ServerSideDirectConnection\Tests\Functional;
 
 use Buzz\Client\Curl;
 use Kayue\Paydollar\ServerSideDirectConnection\Api;
-use Kayue\Paydollar\ServerSideDirectConnection\Model\PaymentDetails;
+use Kayue\Paydollar\Model\PaymentDetails;
 use Kayue\Paydollar\ServerSideDirectConnection\PaymentFactory;
 use Payum\Request\CaptureRequest;
 
@@ -22,7 +22,7 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
         )));
 
         $instruction = new PaymentDetails();
-        $instruction->setOrderRef('HBS-1234-5678');
+        $instruction->setOrderRef(uniqid());
         $instruction->setAmount('1.00');
         $instruction->setCurrCode(840);
         $instruction->setLang('E');
