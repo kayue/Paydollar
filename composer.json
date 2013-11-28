@@ -2,7 +2,7 @@
     "name": "kayue/paydollar",
     "type": "library",
     "description": "A Payum library for AsiaPay PayDollar",
-    "keywords": ["asiapay", "paydollar"],
+    "keywords": ["asiapay", "paydollar", "payum", "paygate", "payment"],
     "license": "MIT",
     "authors": [
         {
