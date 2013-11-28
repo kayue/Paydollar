@@ -1,10 +1,24 @@
 # PayDollar library for Payum
 
-This library implements PayDollar's [Server Side Direct Connection](http://www.paydollar.com/pdf/paygate_integration_guide.pdf)
+This library implements [PayDollar PayGate](http://www.paydollar.com/pdf/paygate_integration_guide.pdf) system.
 
-**Library is still working in progress.**
+**This library is still working in progress.**
 
-## Requirement
+## Connection Methods
+
+### Client Post Through Browser
+
+This method is requried by 99BILL, ALIPAY, CHINAPAY, PayPal, PPS and TENPAY transaction.
+
+### Direct Client Side Connection
+
+This method is used for the merchant if they want to capture the credit card information from their web page instead of using PayDollar standard payment page. This connection method only apply to credit card transaction.
+
+### Server Side Direct Connection
+
+This connection method is for merchant to request payment authorization from bank directly through PayDollar PayGate system. In this connection, merchants need to build their own payment information collection page to collect payment information, such as credit card number, expire data, holder’s name and etc. Then, payment information has to be sent to a defined URL provided by the acquiring bank. Customer of the merchant, therefore, will not see any bank’s payment page.
+
+#### Requirements
 
 For merchant who chooses this method of connection, 128-bit SSL cert must be installed for data encryption. **The system does not accept non-encrypted data.**
 
@@ -16,5 +30,6 @@ http://www.verisign.com/support/verisign-intermediate-ca/extended-validation-pro
 
 ## Todo
 
-* Handle server response
+* Client Post Through Browser, should be quite similar to Direct Client Side Connection.
+* Status action
 * Unit testing
