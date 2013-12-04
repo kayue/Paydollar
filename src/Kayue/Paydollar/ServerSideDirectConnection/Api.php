@@ -7,12 +7,8 @@ use Payum\Exception\Http\HttpException;
 use Kayue\Paydollar\ServerSideDirectConnection\Bridge\Buzz\Request;
 use Kayue\Paydollar\ServerSideDirectConnection\Bridge\Buzz\Response;
 
-class Api 
+class Api extends \Kayue\Paydollar\Api
 {
-    const SUCCESSCODE_ERROR = -1;
-    const SUCCESSCODE_SUCCEEDED = 0;
-    const SUCCESSCODE_FAILURE = 1;
-
     /**
      * @var ClientInterface
      */

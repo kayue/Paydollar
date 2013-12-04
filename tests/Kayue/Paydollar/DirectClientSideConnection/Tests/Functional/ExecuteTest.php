@@ -28,7 +28,7 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
         $instruction->setAmount('1.00');
         $instruction->setCurrCode(840);
         $instruction->setLang('E');
-        $instruction->setPMethod(PaymentDetails::CREDITCARDTYPE_VISA);
+        $instruction->setPMethod(Api::CREDITCARDTYPE_VISA);
         $instruction->setEpMonth('07');
         $instruction->setEpYear('2015');
         $instruction->setCardNo('4918914107195005');
@@ -37,7 +37,7 @@ class ExecuteTest extends \PHPUnit_Framework_TestCase
         $instruction->setSuccessUrl('http://google.com');
         $instruction->setFailUrl('http://google.com');
         $instruction->setErrorUrl('http://google.com');
-        $instruction->setPayType(PaymentDetails::PAYMENTTYPE_NORMAL);
+        $instruction->setPayType(Api::PAYMENTTYPE_NORMAL);
 
         $captureRequest = new CaptureRequest($instruction);
         $interactiveRequest = $payment->execute($captureRequest, true);

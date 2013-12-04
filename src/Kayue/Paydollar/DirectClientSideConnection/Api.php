@@ -4,7 +4,7 @@ namespace Kayue\Paydollar\DirectClientSideConnection;
 use Buzz\Message\Response;
 use Payum\Request\CaptureRequest;
 
-class Api
+class Api extends \Kayue\Paydollar\Api
 {
     /**
      * @var array

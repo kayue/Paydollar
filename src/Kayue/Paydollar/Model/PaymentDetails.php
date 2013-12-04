@@ -2,6 +2,7 @@
 
 namespace Kayue\Paydollar\Model;
 
+use Kayue\Paydollar\Api;
 use Payum\Exception\InvalidArgumentException;
 use Payum\Exception\LogicException;
 use Traversable;
@@ -11,15 +12,6 @@ use Traversable;
  */
 class PaymentDetails implements \ArrayAccess, \IteratorAggregate
 {
-    const CREDITCARDTYPE_VISA = 'VISA';
-    const CREDITCARDTYPE_MASTERCARD = 'Master';
-    const CREDITCARDTYPE_DINERSCLUB = 'Diners';
-    const CREDITCARDTYPE_JCB = 'JCB';
-    const CREDITCARDTYPE_AMEX = 'AMEX';
-
-    const PAYMENTTYPE_NORMAL = 'N';
-    const PAYMENTTYPE_HOLD   = 'H';
-
     protected $request_orderRef;
     protected $request_amount;
     protected $request_currCode;
@@ -202,11 +194,11 @@ class PaymentDetails implements \ArrayAccess, \IteratorAggregate
     public function setPMethod($pMethod)
     {
         if(!in_array($pMethod, [
-            self::CREDITCARDTYPE_AMEX,
-            self::CREDITCARDTYPE_DINERSCLUB,
-            self::CREDITCARDTYPE_JCB,
-            self::CREDITCARDTYPE_MASTERCARD,
-            self::CREDITCARDTYPE_VISA,
+            Api::CREDITCARDTYPE_AMEX,
+            Api::CREDITCARDTYPE_DINERSCLUB,
+            Api::CREDITCARDTYPE_JCB,
+            Api::CREDITCARDTYPE_MASTERCARD,
+            Api::CREDITCARDTYPE_VISA,
         ])) {
             throw new InvalidArgumentException('Invalid payment card type.');
         }
@@ -427,7 +419,7 @@ class PaymentDetails implements \ArrayAccess, \IteratorAggregate
      */
     public function setPayType($payType)
     {
-        if(!in_array($payType, [self::PAYMENTTYPE_NORMAL, self::PAYMENTTYPE_HOLD])) {
+        if(!in_array($payType, [Api::PAYMENTTYPE_NORMAL, Api::PAYMENTTYPE_HOLD])) {
             throw new InvalidArgumentException('Invalid pay type.');
         }
 
