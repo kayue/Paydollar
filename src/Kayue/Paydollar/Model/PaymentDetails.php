@@ -37,6 +37,19 @@ class PaymentDetails implements \ArrayAccess, \IteratorAggregate
     protected $request_payType;
     protected $request_remark;
 
+    protected $response_successcode;
+    protected $response_ref;
+    protected $response_payRef;
+    protected $response_amt;
+    protected $response_cur;
+    protected $response_prc;
+    protected $response_src;
+    protected $response_ord;
+    protected $response_holder;
+    protected $response_authId;
+    protected $response_txTime;
+    protected $response_errMsg;
+
     /**
      * Get Merchant's Order Reference Number
      *
@@ -441,6 +454,22 @@ class PaymentDetails implements \ArrayAccess, \IteratorAggregate
     public function setRemark($remark)
     {
         $this->request_remark = $remark;
+    }
+
+    /**
+     * @param integer $successcode
+     */
+    public function setSuccesscode($successcode)
+    {
+        $this->response_successcode = $successcode;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getSuccesscode()
+    {
+        return $this->response_successcode;
     }
 
     /**
