@@ -48,7 +48,6 @@ class Api
     {
         $request->setMethod('POST');
         $request->fromUrl($this->getApiEndpoint());
-        $request->addHeader('Content-Length: 0');
 
         $this->client->send($request, $response = $this->createResponse());
 
